@@ -1,6 +1,8 @@
 import glob
 import cv2
 import time
+
+import backend
 from backend import send_email
 
 video = cv2.VideoCapture(0)
@@ -46,6 +48,7 @@ while True:
         # The object left the video frame.
         print(f"Image: {image_with_object}")
         send_email(image_with_object)
+        backend.clear_image_folder()
     # print(status_list)
 
     cv2.imshow("My video", frame)
